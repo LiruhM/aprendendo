@@ -1,0 +1,150 @@
+algoritmo "EscolaJaburuBagual"
+var
+    opcao, sub_opcao, opcao_correcao, dado_corrigir: inteiro
+    rg, cpf, nome: caractere
+inicio
+// Cabeçalho
+    escreval("-------------------------------")
+    escreval("     Escola Jaburu Bagual      ")
+    escreval("-------------------------------")
+    escreval("Seja bem-vindo à nossa Escola!")
+
+// Loop principal
+    repita
+// Menu principal
+        escreval("Selecione a atividade desejada:")
+        escreval("[1] Área do Aluno")
+        escreval("[2] Área do Professor")
+        escreval("[3] Nova Matrícula")
+        escreval("[4] Verificar Status da Matrícula")
+        escreval("[5] Notícias Jaburu")
+        escreval("[6] Sair")
+// Leitura da opção do usuário
+        escreva("Digite sua opção: ")
+        leia(opcao)
+// Tratamento das opções
+   escolha opcao
+           caso 1
+                escreval("Área do Aluno selecionada.")
+                repita
+                    escreval("Escolha uma das seguintes opções:")
+                    escreval("[1] Notas")
+                    escreval("[2] Boletim")
+                    escreval("[3] Faltas")
+                    escreval("[4] Atestados")
+                    escreval("[5] Retornar ao Menu Principal")
+                    escreva("Digite sua escolha: ")
+                    leia(sub_opcao)
+                    escolha sub_opcao
+                        caso 1
+                            escreval("Você selecionou 'Notas'.")
+                        caso 2
+                            escreval("Você selecionou 'Boletim'.")
+                        caso 3
+                            escreval("Você selecionou 'Faltas'.")
+                        caso 4
+                            escreval("Você selecionou 'Atestados'.")
+                        caso 5
+                            escreval("Retornando ao menu principal...")
+                        caso contrario
+                            escreval("Opção inválida! Tente novamente.")
+                    fimescolha
+                    ate sub_opcao = 5
+           caso 2
+                    escreval("Área do Professor selecionada.")
+                    repita
+                      escreval (" [!} Lançar Notas")
+                      escreval (" [2] Consultar Faltas")
+                      escreval (" [3] Gerar Relatórios")
+                      escreval (" [4] Retornar ao Menu Principal")
+                      escreva ("Digite sua opção: ")
+                leia (sub_opcao)
+                escolha sub_opcao
+                        caso 1
+                        escreval("Você selecionou 'Lançar Notas'.")
+                        caso 2
+                        escreval("Você selecionou 'Consultar Faltas'.")
+                        caso 3
+                        escreval("Você selecionou 'Gerar Relatórios'.")
+                        caso 4
+                        escreval("Retornando ao menu principal...")
+                        caso contrario
+                        escreval ("Opção Inválida! Tente Novamente")
+                fimescolha
+                ate sub_opcao = 4
+            caso 3
+                escreval("Nova Matrícula selecionada.")
+                escreval ("Para nova Mátricula entre com os documentos pedidos a seguir: ")
+                escreval ("Utilixe apenas números no RG e CPF")
+                escreval ("Nome Completo: ")
+                leia (nome)
+                escreval ("RG: ")
+                leia (rg)
+                escreval ("CPF: ")
+                leia (cpf)
+                escreval ("-----------------------")
+                Escreval ("Confirme sua Matrícula")
+                escreval ("Nome do Aluno: ", nome)
+                escreval ("RG: ", rg)
+                escreval ("CPF: ", cpf)
+                escreval ("-----------------------")
+                escreval (" [!] Confirma")
+                escreval (" [2] Corrigir")
+                escreval ("Escolha uma opção")
+                leia (opcao_correcao)
+                enquanto opcao_correcao = 2 faca
+                         escreval ("Qual dado deseja Corrigir")
+                         escreval (" [1] Nome")
+                         escreval (" [2] RG")
+                         escreval (" [3] CPF")
+                         escreval ("Escolha uma opção")
+                leia (dado_corrigir)
+                     caso 1
+                          escreva ("Digite seu nome completo novamente: ")
+                          leia (nome)
+                     caso 2
+                          escreva ("Digite seu RG novamente: ")
+                          leia (rg)
+                     caso 3
+                          escreva ("Digite seu CPF novamente: ")
+                     caso contrario
+                          escreva ("Opção Inválida!")
+                fimescolha
+                escreval ("-----------------------")
+                escreval ("Dados Atualizados: ")
+                escreval ("Nome: ", nome)
+                escreval ("RG: ", rg)
+                escreval ("CPF: ", cpf)
+                escreval ("-----------------------")
+                escreval (" [1] Confirmar")
+                escreval (" [2] Corrigir")
+                escreval ("Escolha uma opção")
+                leia (opcao_correcao)
+                fimenquanto
+                escreval ("Matricula Registrada com Sucesso!")
+                escreval ("-----------------------")
+                escreval ("Dados do aluno: ")
+                escreval ("Nome: ", nome)
+                escreval ("RG: ", rg)
+                escreval ("CPF: ", cpf)
+                escreval ("-----------------------")
+            caso 4
+                escreval("Verificar Status da Matrícula selecionado.")
+                // nada ainda
+            caso 5
+                escreval("Notícias Jaburu selecionado.")
+                // nada ainda
+
+            caso 6
+                escreval("Saindo do sistema...")
+
+            caso contrario
+                escreval("Opção inválida! Tente novamente.")
+        fimescolha
+        
+        se opcao <> 6 entao
+            escreval("Pressione ENTER para continuar...")
+            leia()
+        fimse
+    ate opcao = 6
+fimalgoritmo
