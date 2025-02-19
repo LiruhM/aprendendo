@@ -1,150 +1,183 @@
 algoritmo "EscolaJaburuBagual"
-var
-    opcao, sub_opcao, opcao_correcao, dado_corrigir: inteiro
-    rg, cpf, nome: caractere
-inicio
-// Cabeçalho
-    escreval("-------------------------------")
-    escreval("     Escola Jaburu Bagual      ")
-    escreval("-------------------------------")
-    escreval("Seja bem-vindo à nossa Escola!")
+   var
+       opcao, sub_opcao, opcao_correcao, dado_corrigir, i, j: inteiro
+       rg, cpf, nome, cpf_consulta: caractere
+       encontrou: logico
+       alunos: vetor[1..100, 1..4] de caractere // Matriz para armazenar até 100 alunos
+   inicio
+       // Inicialização do índice
+       i <- 1
 
-// Loop principal
-    repita
-// Menu principal
-        escreval("Selecione a atividade desejada:")
-        escreval("[1] Área do Aluno")
-        escreval("[2] Área do Professor")
-        escreval("[3] Nova Matrícula")
-        escreval("[4] Verificar Status da Matrícula")
-        escreval("[5] Notícias Jaburu")
-        escreval("[6] Sair")
-// Opções do usuário
-        escreva("Digite sua opção: ")
-        leia(opcao)
-// Escolha das opções
-   escolha opcao
-           caso 1
-                escreval("Área do Aluno selecionada.")
-                repita
-                    escreval("Escolha uma das seguintes opções:")
-                    escreval("[1] Notas")
-                    escreval("[2] Boletim")
-                    escreval("[3] Faltas")
-                    escreval("[4] Atestados")
-                    escreval("[5] Retornar ao Menu Principal")
-                    escreva("Digite sua escolha: ")
-                    leia(sub_opcao)
-                    escolha sub_opcao
-                        caso 1
-                            escreval("Você selecionou 'Notas'.")
-                        caso 2
-                            escreval("Você selecionou 'Boletim'.")
-                        caso 3
-                            escreval("Você selecionou 'Faltas'.")
-                        caso 4
-                            escreval("Você selecionou 'Atestados'.")
-                        caso 5
-                            escreval("Retornando ao menu principal...")
-                        caso contrario
-                            escreval("Opção inválida! Tente novamente.")
-                    fimescolha
-                    ate sub_opcao = 5
-           caso 2
-                    escreval("Área do Professor selecionada.")
-                    repita
-                      escreval (" [!} Lançar Notas")
-                      escreval (" [2] Consultar Faltas")
-                      escreval (" [3] Gerar Relatórios")
-                      escreval (" [4] Retornar ao Menu Principal")
-                      escreva ("Digite sua opção: ")
-                leia (sub_opcao)
-                escolha sub_opcao
-                        caso 1
-                        escreval("Você selecionou 'Lançar Notas'.")
-                        caso 2
-                        escreval("Você selecionou 'Consultar Faltas'.")
-                        caso 3
-                        escreval("Você selecionou 'Gerar Relatórios'.")
-                        caso 4
-                        escreval("Retornando ao menu principal...")
-                        caso contrario
-                        escreval ("Opção Inválida! Tente Novamente")
-                fimescolha
-                ate sub_opcao = 4
-            caso 3
-                escreval("Nova Matrícula selecionada.")
-                escreval ("Para nova Mátricula entre com os documentos pedidos a seguir: ")
-                escreval ("Utilixe apenas números no RG e CPF")
-                escreval ("Nome Completo: ")
-                leia (nome)
-                escreval ("RG: ")
-                leia (rg)
-                escreval ("CPF: ")
-                leia (cpf)
-                escreval ("-----------------------")
-                Escreval ("Confirme sua Matrícula")
-                escreval ("Nome do Aluno: ", nome)
-                escreval ("RG: ", rg)
-                escreval ("CPF: ", cpf)
-                escreval ("-----------------------")
-                escreval (" [!] Confirma")
-                escreval (" [2] Corrigir")
-                escreval ("Escolha uma opção")
-                leia (opcao_correcao)
-                enquanto opcao_correcao = 2 faca
-                         escreval ("Qual dado deseja Corrigir")
-                         escreval (" [1] Nome")
-                         escreval (" [2] RG")
-                         escreval (" [3] CPF")
-                         escreval ("Escolha uma opção")
-                leia (dado_corrigir)
-                     caso 1
-                          escreva ("Digite seu nome completo novamente: ")
-                          leia (nome)
-                     caso 2
-                          escreva ("Digite seu RG novamente: ")
-                          leia (rg)
-                     caso 3
-                          escreva ("Digite seu CPF novamente: ")
-                     caso contrario
-                          escreva ("Opção Inválida!")
-                fimescolha
-                escreval ("-----------------------")
-                escreval ("Dados Atualizados: ")
-                escreval ("Nome: ", nome)
-                escreval ("RG: ", rg)
-                escreval ("CPF: ", cpf)
-                escreval ("-----------------------")
-                escreval (" [1] Confirmar")
-                escreval (" [2] Corrigir")
-                escreval ("Escolha uma opção")
-                leia (opcao_correcao)
-                fimenquanto
-                escreval ("Matricula Registrada com Sucesso!")
-                escreval ("-----------------------")
-                escreval ("Dados do aluno: ")
-                escreval ("Nome: ", nome)
-                escreval ("RG: ", rg)
-                escreval ("CPF: ", cpf)
-                escreval ("-----------------------")
-            caso 4
-                escreval("Verificar Status da Matrícula selecionado.")
-                // nada ainda
-            caso 5
-                escreval("Notícias Jaburu selecionado.")
-                // nada ainda
+       // Cabeçalho
+       escreval("-------------------------------")
+       escreval("     Escola Jaburu Bagual      ")
+       escreval("-------------------------------")
+       escreval("Seja bem-vindo à nossa Escola!")
 
-            caso 6
-                escreval("Saindo do sistema...")
+       // Loop principal
+       repita
+           // Menu principal
+           escreval("Selecione a atividade desejada:")
+           escreval("[1] Área do Aluno")
+           escreval("[2] Área do Professor")
+           escreval("[3] Nova Matrícula")
+           escreval("[4] Verificar Status da Matrícula")
+           escreval("[5] Notícias Jaburu")
+           escreval("[6] Sair")
 
-            caso contrario
-                escreval("Opção inválida! Tente novamente.")
-        fimescolha
-        
-        se opcao <> 6 entao
-            escreval("Pressione ENTER para continuar...")
-            leia()
-        fimse
-    ate opcao = 6
+           // Leitura da opção do usuário
+           escreva("Digite sua opção: ")
+           leia(opcao)
+
+           // Tratamento das opções
+           escolha opcao
+               caso 1
+                   escreval("Área do Aluno selecionada.")
+                   repita
+                       escreval("Escolha uma das seguintes opções:")
+                       escreval("[1] Notas")
+                       escreval("[2] Boletim")
+                       escreval("[3] Faltas")
+                       escreval("[4] Atestados")
+                       escreval("[5] Retornar ao Menu Principal")
+                       escreva("Digite sua escolha: ")
+                       leia(sub_opcao)
+
+                       escolha sub_opcao
+                           caso 1
+                               escreval("Você selecionou 'Notas'.")
+                           caso 2
+                               escreval("Você selecionou 'Boletim'.")
+                           caso 3
+                               escreval("Você selecionou 'Faltas'.")
+                           caso 4
+                               escreval("Você selecionou 'Atestados'.")
+                           caso 5
+                               escreval("Retornando ao menu principal...")
+                           caso contrario
+                               escreval("Opção inválida! Tente novamente.")
+                       fimescolha
+                   ate sub_opcao = 5
+
+               caso 2
+                   escreval("Área do Professor selecionada.")
+                   repita
+                       escreval("[1] Lançar Notas")
+                       escreval("[2] Consultar Faltas")
+                       escreval("[3] Gerar Relatórios")
+                       escreval("[4] Retornar ao Menu Principal")
+                       escreva("Digite sua opção: ")
+                       leia(sub_opcao)
+
+                       escolha sub_opcao
+                           caso 1
+                               escreval("Você selecionou 'Lançar Notas'.")
+                           caso 2
+                               escreval("Você selecionou 'Consultar Faltas'.")
+                           caso 3
+                               escreval("Você selecionou 'Gerar Relatórios'.")
+                           caso 4
+                               escreval("Retornando ao menu principal...")
+                           caso contrario
+                               escreval("Opção Inválida! Tente Novamente.")
+                       fimescolha
+                   ate sub_opcao = 4
+
+               caso 3
+                   se i > 100 entao
+                       escreval("Limite de alunos atingido! Não é possível cadastrar mais matrículas.")
+                   senao
+                       escreval("Nova Matrícula selecionada.")
+                       escreval("Nome Completo: ")
+                       leia(nome)
+                       escreval("RG: ")
+                       leia(rg)
+                       escreval("CPF: ")
+                       leia(cpf)
+
+                       escreval("-----------------------")
+                       escreval("Confirme sua Matrícula:")
+                       escreval("Nome do Aluno:", nome)
+                       escreval("RG:", rg)
+                       escreval("CPF:", cpf)
+                       escreval("-----------------------")
+                       escreval("[1] Confirmar")
+                       escreval("[2] Corrigir")
+                       escreva("Escolha uma opção: ")
+                       leia(opcao_correcao)
+
+                       enquanto opcao_correcao = 2 faca
+                           escreval("Qual dado deseja corrigir?")
+                           escreval("[1] Nome")
+                           escreval("[2] RG")
+                           escreval("[3] CPF")
+                           escreva("Escolha uma opção: ")
+                           leia(dado_corrigir)
+
+                           escolha dado_corrigir
+                               caso 1
+                                   escreva("Digite seu nome completo novamente: ")
+                                   leia(nome)
+                               caso 2
+                                   escreva("Digite seu RG novamente: ")
+                                   leia(rg)
+                               caso 3
+                                   escreva("Digite seu CPF novamente: ")
+                                   leia(cpf)
+                               caso contrario
+                                   escreval("Opção Inválida!")
+                           fimescolha
+
+                           escreval("-----------------------")
+                           escreval("Dados Atualizados:")
+                           escreval("Nome:", nome)
+                           escreval("RG:", rg)
+                           escreval("CPF:", cpf)
+                           escreval("-----------------------")
+                           escreval("[1] Confirmar")
+                           escreval("[2] Corrigir")
+                           escreva("Escolha uma opção: ")
+                           leia(opcao_correcao)
+                       fimenquanto
+
+                       alunos[i, 1] <- nome
+                       alunos[i, 2] <- cpf
+                       alunos[i, 3] <- "ATIVO"
+                       alunos[i, 4] <- ""
+                       i <- i + 1
+
+                       escreval("Matrícula Registrada com Sucesso!")
+                   fimse
+
+               caso 4
+                   escreval("Verificar Status da Matrícula selecionado.")
+                   escreva("Digite o CPF do aluno: ")
+                   leia(cpf_consulta)
+                   encontrou <- falso
+
+                   para j de 1 ate i - 1 faca
+                       se alunos[j, 2] = cpf_consulta entao
+                           encontrou <- verdadeiro
+                           escreval("-----------------------")
+                           escreval("Status da Matrícula:")
+                           escreval("Nome:", alunos[j, 1])
+                           escreval("CPF:", alunos[j, 2])
+                           escreval("Status:", alunos[j, 3])
+                           escreval("-----------------------")
+                           interrompa
+                       fimse
+                   fimpara
+
+                   se nao encontrou entao
+                       escreval("CPF Não cadastrado no sistema. Verifique novamente.")
+                   fimse
+
+               caso 5
+                   escreval("Notícias Jaburu selecionado. (Ainda não implementado)")
+               caso 6
+                   escreval("Saindo do sistema...")
+               caso contrario
+                   escreval("Opção inválida! Tente novamente.")
+           fimescolha
+       ate opcao = 6
 fimalgoritmo
