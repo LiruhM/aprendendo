@@ -19,10 +19,10 @@ inicio
         escreval("[4] Verificar Status da Matrícula")
         escreval("[5] Notícias Jaburu")
         escreval("[6] Sair")
-// Leitura da opção do usuário
+// Opções do usuário
         escreva("Digite sua opção: ")
         leia(opcao)
-// Tratamento das opções
+// Escolha das opções
    escolha opcao
            caso 1
                 escreval("Área do Aluno selecionada.")
